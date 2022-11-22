@@ -10,7 +10,7 @@
     @foreach (Discount d in Model)
     {
         
-             <a asp-action="Index" asp-route-id="@d.ProductId" class="list-group-item list-group-item-action">@d.Title - <i style="opacity:.6;">@d.Description</i><br><i>Discount amount: @d.DiscountPercent.ToString("p2")</i><br><i>Discount expires: @d.EndTime.ToString("MM/dd/yyyy")</i><br><i>Discount code: @d.Code</i></a>
+             <a class="list-group-item list-group-item-action">@d.Title - <i style="opacity:.6;">@d.Description</i><br><i>Discount amount: @d.DiscountPercent.ToString("p2")</i><br><i>Discount expires: @d.EndTime.ToString("MM/dd/yyyy")</i><br><i>Discount code: @d.Code</i></a>
     
     }
 
