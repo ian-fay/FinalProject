@@ -5,13 +5,14 @@
 
 <h2 class="mt-3"><i class="fas fa-list-ul"></i> Current Discounts</h2>
 
+    <button> Add New Discount</button>
     <div class="list-group">
 
     @foreach (Discount d in Model)
-    {
-        
+    {  
              <a class="list-group-item list-group-item-action">@d.Title - <i style="opacity:.6;">@d.Description</i><br><i>Discount amount: @d.DiscountPercent.ToString("p2")</i><br><i>Discount expires: @d.EndTime.ToString("MM/dd/yyyy")</i><br><i>Discount code: @d.Code</i></a>
-    
+            <button> Remove Discount</button>
+            <button> Edit Discount</button>
     }
 
 </div>
