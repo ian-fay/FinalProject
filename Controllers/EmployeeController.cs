@@ -24,5 +24,28 @@ namespace Northwind.Controllers
             return View();
         }
 
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult AddDiscount(Discount discount)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_northwindContext.Discounts.Any(d => d.Code == discount.Code))
+                {
+                    ModelState.AddModelError("", "Discount code must be unique");
+                }
+                else
+                {
+                    if (ModelState.IsValid)
+                    {
+                        // Create discount (Northwind)
+                        _northwindContext.AddDiscount(discount);
+                        return RedirectToAction("Discounts", "Product");
+                    }
+                }
+            }
+            return View();
+        }
+
+
     }
 }

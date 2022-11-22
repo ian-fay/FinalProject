@@ -1,1 +1,47 @@
-E.
+@model Northwind.Models.Discount
+
+<div class="bg-primary m-1 p-1 text-white">
+    <h4>Add Discount</h4>
+</div>
+<form method="post" asp-action="AddDiscount">
+    <div asp-validation-summary="All"></div>
+    <div class="form-row">
+        <div class="form-group col-md-6"></div>
+        <label asp-for="@Model.Code">Enter discount code</label>
+        <input asp-for="@Model.Code" placeholder="Discount Code" />
+    </div>
+
+    <div class="form-row">
+    <label asp-for="@Model.StartTime">Enter start time</label>
+    <input asp-for="@Model.StartTime" placeholder="Discount start time" />
+    </div>
+
+    <div class="form-row">
+    <label asp-for="@Model.EndTime">Enter end time</label>
+    <input asp-for="@Model.EndTime" placeholder="Discount end time" />
+    </div>
+
+    <div class="form-row">
+    <label asp-for="@Model.ProductId">Enter product ID</label>
+    <input asp-for="@Model.ProductId" placeholder="Product ID" />
+    </div>
+
+    <div class="form-row">
+    <label asp-for="@Model.DiscountPercent">Enter discount percent</label>
+    <input asp-for="@Model.DiscountPercent" placeholder="Discount percent" />
+    </div>
+
+    <div class="form-row">
+    <label asp-for="@Model.Title">Enter discount title</label>
+    <input asp-for="@Model.Title" placeholder="Discount title" />
+    </div>
+
+    <div class="form-row">
+    <label asp-for="@Model.Description">Enter discount description</label>
+    <input asp-for="@Model.Description" placeholder="Discount description" />
+    </div>
+
+    <button type="submit">Create</button>
+    </div>
+
+</form>
