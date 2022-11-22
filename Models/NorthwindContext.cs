@@ -55,6 +55,12 @@ namespace Northwind.Models
             SaveChanges();
             cartItem.Product = Products.Find(cartItem.ProductId);
             return cartItem;
+
+        }
+
+        public void AddDiscount (Discount discount) {
+            this.Add(discount);
+            this.SaveChanges();
         }
     }
 }
