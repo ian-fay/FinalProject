@@ -12,37 +12,37 @@
         }
     }
     
-    <div class="list-group">
+    <ul class="list-group">
 
     @foreach (Discount d in Model)
     {  
-        <a class="list-group-item list-group-item-action">
+        <li class="list-group-item list-group-item-action">
+            @if (d.StartTime > DateTime.Now){
+                <div class="discount-inactive">Discount not active</div><hr />
+            } else if (d.EndTime < DateTime.Now){
+                <div class="discount-expired">Discount expired</div><hr />
+            }
             @d.Title - <i style="opacity:.6;">@d.Description</i><br>
             <i>Discount amount: @d.DiscountPercent?.ToString("p2")</i><br>
             <i>Discount starts: @d.StartTime?.ToString("MM/dd/yyyy")</i><br>
             <i>Discount expires: @d.EndTime?.ToString("MM/dd/yyyy")</i><br>
-            <i>Discount code: @d.Code</i>
-            @if (d.StartTime > DateTime.Now){
-                <hr /><div class="discount-inactive">Discount not active</div>
-            } else if (d.EndTime < DateTime.Now){
-                <hr /><div class="discount-expired">Discount expired</div>
-            }
-        </a>
+            <i>Discount code: @d.Code</i><br>
 
         @if (User?.Identity?.IsAuthenticated?? true) {
             if(User.IsInRole("northwind-employee")) 
             {
-                <a asp-controller="Employee" asp-action="RemoveDiscount" asp-route-id="@d.DiscountId">Remove Discount</a>
+                <span>[ </span><a asp-controller="Employee" asp-action="RemoveDiscount" asp-route-id="@d.DiscountId">Remove Discount</a><span> ]</span>
             }
         }
                    
         @if (User?.Identity?.IsAuthenticated?? true) {
             if(User.IsInRole("northwind-employee")) 
             {
-                <a asp-controller="Employee" asp-action="EditDiscount" asp-route-id="@d.DiscountId">Edit Discount</a>
+                <span>[ </span><a asp-controller="Employee" asp-action="EditDiscount" asp-route-id="@d.DiscountId">Edit Discount</a><span> ]</span>
             }
         }
+        </li>
     }
 
-</div>
+</ul>
 
