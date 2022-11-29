@@ -83,3 +83,11 @@ body {
   #product_rows tr {
     cursor: pointer;
 }
+
+.discount-inactive {
+    opacity: .5;
+}
+
+.discount-expired {
+    color:red;
+}

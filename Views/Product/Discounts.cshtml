@@ -16,7 +16,17 @@
 
     @foreach (Discount d in Model)
     {  
-             <a class="list-group-item list-group-item-action">@d.Title - <i style="opacity:.6;">@d.Description</i><br><i>Discount amount: @d.DiscountPercent?.ToString("p2")</i><br><i>Discount expires: @d.EndTime?.ToString("MM/dd/yyyy")</i><br><i>Discount code: @d.Code</i></a>
+        <a class="list-group-item list-group-item-action">
+            @d.Title - <i style="opacity:.6;">@d.Description</i><br>
+            <i>Discount amount: @d.DiscountPercent?.ToString("p2")</i><br>
+            <i>Discount expires: @d.EndTime?.ToString("MM/dd/yyyy")</i><br>
+            <i>Discount code: @d.Code</i>
+            @if (d.StartTime > DateTime.Now){
+                <hr /><div class="discount-inactive">Discount not active</div>
+            } else if (d.EndTime < DateTime.Now){
+                <hr /><div class="discount-expired">Discount expired</div>
+            }
+        </a>
            
            
         @if (User?.Identity?.IsAuthenticated?? true) {
