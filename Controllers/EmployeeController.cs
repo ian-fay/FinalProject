@@ -21,6 +21,7 @@ namespace Northwind.Controllers
         [Authorize(Roles = "northwind-employee")]
         public IActionResult AddDiscount() 
         {
+            ViewBag.Products = _northwindContext.Products.OrderBy(p => p.ProductName);
             return View();
         }
 
@@ -43,6 +44,8 @@ namespace Northwind.Controllers
                     }
                 }
             }
+            // return RedirectToAction("AddDiscount", "Employee");
+            ViewBag.Products = _northwindContext.Products.OrderBy(p => p.ProductName);
             return View();
         }
 

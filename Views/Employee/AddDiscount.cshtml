@@ -19,12 +19,17 @@
     <label asp-for="@Model.EndTime">Enter end time</label>
     <input class="form-control" asp-for="@Model.EndTime" placeholder="Discount end time" />
     </div>
-
     <div class="form-group">
-    <label asp-for="@Model.ProductId">Enter product ID</label>
-    <input class="form-control" asp-for="@Model.ProductId" placeholder="Product ID" />
+        <label asp-for="@Model.ProductId">Enter product ID</label>
+        <select class="form-control" name="ProductId">
+        @foreach (Northwind.Models.Product p in ViewBag.Products)
+        {
+            <option value="@p.ProductId">
+                @p.ProductName
+            </option>
+        }
+        </select>
     </div>
-
     <div class="form-group">
     <label asp-for="@Model.DiscountPercent">Enter discount percent</label>
     <input class="form-control" asp-for="@Model.DiscountPercent" placeholder="Discount percent" />
