@@ -1,0 +1,56 @@
+@model Northwind.Models.Discount
+
+<div class="bg-primary m-1 p-1 text-white">
+    <h4>Edit Discount</h4>
+</div>
+<form method="post" asp-action="EditDiscount">
+    <input type="hidden" name="DiscountId" value="@Model.DiscountId">
+    <input type="hidden" name="Code" value="@Model.Code">
+    <div asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label>Enter discount code</label>
+        <input disabled class="form-control" type="text" value="@Model.Code" />
+    </div>
+    <div class="form-group">
+    <label asp-for="@Model.StartTime">Enter start time</label>
+    <input class="form-control" asp-for="@Model.StartTime" placeholder="Discount start time" />
+    </div>
+    <div class="form-group">
+    <label asp-for="@Model.EndTime">Enter end time</label>
+    <input class="form-control" asp-for="@Model.EndTime" placeholder="Discount end time" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.ProductId">Enter product ID</label>
+        <select class="form-control" name="ProductId">
+        @foreach (Northwind.Models.Product p in ViewBag.Products)
+        {
+            @if (Model.ProductId == p.ProductId) {
+                <option value="@p.ProductId" selected>
+                    @p.ProductName
+                </option>
+            } else {
+                <option value="@p.ProductId">
+                    @p.ProductName
+                </option>
+            }
+        }
+        </select>
+    </div>
+    <div class="form-group">
+    <label asp-for="@Model.DiscountPercent">Enter discount percent</label>
+    <input class="form-control" asp-for="@Model.DiscountPercent" placeholder="Discount percent" />
+    </div>
+
+    <div class="form-group">
+    <label asp-for="@Model.Title">Enter discount title</label>
+    <input class="form-control" asp-for="@Model.Title" placeholder="Discount title" />
+    </div>
+
+    <div class="form-group">
+    <label asp-for="@Model.Description">Enter discount description</label>
+    <input class="form-control" asp-for="@Model.Description" placeholder="Discount description" />
+    </div>
+
+    <button class="form-control" type="submit">Save Changes</button>
+
+</form>

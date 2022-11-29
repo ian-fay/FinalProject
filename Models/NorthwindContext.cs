@@ -63,6 +63,18 @@ namespace Northwind.Models
             this.SaveChanges();
         }
 
+        public void EditDiscount (Discount discount) {
+            var d = Discounts.FirstOrDefault(d => d.DiscountId == discount.DiscountId);
+            // d.Code = discount.Code;
+            d.StartTime = discount.StartTime;
+            d.EndTime = discount.EndTime;
+            d.DiscountPercent = discount.DiscountPercent;
+            d.Title = discount.Title;
+            d.Description = discount.Description;
+            d.ProductId = discount.ProductId;
+            this.SaveChanges();
+        }
+
         public void RemoveDiscount(Discount discount) {
             this.Remove(discount);
             this.SaveChanges();
