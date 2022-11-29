@@ -22,7 +22,7 @@
         @if (User?.Identity?.IsAuthenticated?? true) {
             if(User.IsInRole("northwind-employee")) 
             {
-                <button> Remove Discount</button>
+                <a asp-controller="Employee" asp-action="RemoveDiscount" asp-route-id="@d.DiscountId">Remove Discount</a>
             }
         }
 

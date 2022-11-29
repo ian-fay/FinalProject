@@ -46,6 +46,10 @@ namespace Northwind.Controllers
             return View();
         }
 
-
+        [Authorize(Roles = "northwind-employee")]
+        public IActionResult RemoveDiscount(int id) {
+            _northwindContext.RemoveDiscount(_northwindContext.Discounts.FirstOrDefault(d => d.DiscountId == id));
+            return RedirectToAction("Discounts", "Product");
+        }
     }
 }

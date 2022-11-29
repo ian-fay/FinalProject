@@ -62,5 +62,10 @@ namespace Northwind.Models
             this.Add(discount);
             this.SaveChanges();
         }
+
+        public void RemoveDiscount(Discount discount) {
+            this.Remove(discount);
+            this.SaveChanges();
+        }
     }
 }
